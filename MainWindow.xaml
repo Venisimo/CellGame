@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
     <Grid>
-        <Button Content="Начать игру" HorizontalAlignment="Center" VerticalAlignment="Top" Height="96" Width="368" Margin="0,164,0,0" Click="Start_button_Click"/>
+        <Button Content="Начать игру" HorizontalAlignment="Center" VerticalAlignment="Top" Height="96" Width="368" Margin="0,376,0,0" Click="Start_button_Click"/>
+        <TextBox Name="AmountObjects" HorizontalAlignment="Left" Height="24" Margin="374,269,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="168"/>
+        <Label Content="Кол-во шариков: " HorizontalAlignment="Left" Height="24" Margin="238,266,0,0" VerticalAlignment="Top" Width="118"/>
+        <Label Content="Скорость шариков: " HorizontalAlignment="Left" Height="24" Margin="238,316,0,0" VerticalAlignment="Top" Width="118"/>
+        <TextBox Name="Speed" HorizontalAlignment="Left" Height="24" Margin="374,316,0,0" TextWrapping="Wrap" Text="250" VerticalAlignment="Top" Width="168"/>
     </Grid>
 </Window>

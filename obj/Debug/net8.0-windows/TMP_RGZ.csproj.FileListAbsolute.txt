@@ -64,3 +64,26 @@ C:\Users\Ярослав\OneDrive\Desktop\TMP_RGZ\obj\Debug\net8.0-windows\refint
 C:\Users\Ярослав\OneDrive\Desktop\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.pdb
 C:\Users\Ярослав\OneDrive\Desktop\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.genruntimeconfig.cache
 C:\Users\Ярослав\OneDrive\Desktop\TMP_RGZ\obj\Debug\net8.0-windows\ref\TMP_RGZ.dll
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\bin\Debug\net8.0-windows\TMP_RGZ.exe
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\bin\Debug\net8.0-windows\TMP_RGZ.deps.json
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\bin\Debug\net8.0-windows\TMP_RGZ.runtimeconfig.json
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\bin\Debug\net8.0-windows\TMP_RGZ.dll
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\bin\Debug\net8.0-windows\TMP_RGZ.pdb
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\GameWindow.baml
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\GameWindow.g.cs
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\App.g.cs
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ_MarkupCompile.cache
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ_MarkupCompile.lref
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\MainWindow.baml
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.g.resources
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.GeneratedMSBuildEditorConfig.editorconfig
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.AssemblyInfoInputs.cache
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.AssemblyInfo.cs
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.csproj.CoreCompileInputs.cache
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.sourcelink.json
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.dll
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\refint\TMP_RGZ.dll
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.pdb
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\TMP_RGZ.genruntimeconfig.cache
+D:\НГТУ\4 семестр\ТиМП\ВСЕ РГР\TMP_RGZ version 1.0\TMP_RGZ\obj\Debug\net8.0-windows\ref\TMP_RGZ.dll

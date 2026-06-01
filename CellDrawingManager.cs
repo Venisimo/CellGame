@@ -6,13 +6,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace TMP_RGZ
 {
@@ -90,6 +83,9 @@ namespace TMP_RGZ
 
                     // Пропускаем само ребро, которое мы проверяем
                     if (existingEdge == edge)
+                        continue;
+
+                    if (existingEdge.Start == otherEnd || existingEdge.End == otherEnd)
                         continue;
 
                     // Проверяем пересечение
@@ -181,22 +177,48 @@ namespace TMP_RGZ
         // Проверка, задевает ли отрезок (p1-p2) существующее ребро с учётом радиуса
         private bool DoEdgesTouch(Vector p1, Vector p2, Edge existingEdge)
         {
-            // Получаем точки существующего ребра
             Vector e1 = existingEdge.Start.V_Position;
             Vector e2 = existingEdge.End.V_Position;
 
-            // Проверяем расстояние от каждого конца нового ребра до существующего ребра
-            double dist1 = PointToSegmentDistance(new Point(p1.X, p1.Y), new Point(e1.X, e1.Y), new Point(e2.X, e2.Y));
-            double dist2 = PointToSegmentDistance(new Point(p2.X, p2.Y), new Point(e1.X, e1.Y), new Point(e2.X, e2.Y));
+            const double eps = 1.0;
 
-            // Проверяем расстояние от каждого конца существующего ребра до нового ребра
-            double dist3 = PointToSegmentDistance(new Point(e1.X, e1.Y), new Point(p1.X, p1.Y), new Point(p2.X, p2.Y));
-            double dist4 = PointToSegmentDistance(new Point(e2.X, e2.Y), new Point(p1.X, p1.Y), new Point(p2.X, p2.Y));
+            // Если новый отрезок имеет общую вершину с существующим,
+            // такое касание разрешаем
+            bool sharesEndpoint =
+                p1.DistanceTo(e1) < eps ||
+                p1.DistanceTo(e2) < eps ||
+                p2.DistanceTo(e1) < eps ||
+                p2.DistanceTo(e2) < eps;
 
-            // Если любое расстояние меньше радиуса погрешности - считаем задеванием
+            if (sharesEndpoint)
+                return false;
+
+            double dist1 = PointToSegmentDistance(
+                new Point(p1.X, p1.Y),
+                new Point(e1.X, e1.Y),
+                new Point(e2.X, e2.Y));
+
+            double dist2 = PointToSegmentDistance(
+                new Point(p2.X, p2.Y),
+                new Point(e1.X, e1.Y),
+                new Point(e2.X, e2.Y));
+
+            double dist3 = PointToSegmentDistance(
+                new Point(e1.X, e1.Y),
+                new Point(p1.X, p1.Y),
+                new Point(p2.X, p2.Y));
+
+            double dist4 = PointToSegmentDistance(
+                new Point(e2.X, e2.Y),
+                new Point(p1.X, p1.Y),
+                new Point(p2.X, p2.Y));
+
             double tolerance = DEFAULT_TOLERANCE_RADIUS;
 
-            return dist1 <= tolerance || dist2 <= tolerance || dist3 <= tolerance || dist4 <= tolerance;
+            return dist1 <= tolerance ||
+                   dist2 <= tolerance ||
+                   dist3 <= tolerance ||
+                   dist4 <= tolerance;
         }
 
         // Добавьте этот метод в класс CellDrawingManager
@@ -687,6 +709,7 @@ namespace TMP_RGZ
 
             if (wouldCreateIntersection || wouldTouchEdge || wouldEdgeTouchOtherEdge)
             {
+                Logger.Log($"Конфликт: intersection={wouldCreateIntersection}, touchEdge={wouldTouchEdge}, edgeTouchOther={wouldEdgeTouchOtherEdge}", "DRAG");
                 Visualizer.ShowDragConflict(currentPoint);
                 return;
             }
@@ -873,7 +896,7 @@ namespace TMP_RGZ
             if (Edges.Count == 0) return;
 
             // Изменяем условие: удаляем рёбра, у которых IsRemovableOnTouch == false
-            var edgesToRemove = Edges.Where(edge => !edge.IsRemovableOnTouch &&  // <-- ИЗМЕНЕНО: !edge.IsRemovableOnTouch
+            var edgesToRemove = Edges.Where(edge => edge.IsRemovableOnTouch &&  // <-- ИЗМЕНЕНО: !edge.IsRemovableOnTouch
                 objects.Any(obj => IsEdgeTouchedByObject(edge, obj))).ToList();
 
             if (edgesToRemove.Count == 0) return;

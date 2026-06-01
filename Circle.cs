@@ -9,6 +9,8 @@ namespace TMP_RGZ
         public Vector V_Position { get; set; }
         public Vector V_Velocity { get; set; }
         public double Radius { get; set; } = 15;
+
+        public Brush Brush { get; set; }        
         public Ellipse EllipseShape { get; set; }
 
         public Shape Shape => EllipseShape;
@@ -21,12 +23,13 @@ namespace TMP_RGZ
             V_Position = v_position;
             V_Velocity = v_Velocity;
             Radius = radius;
+            Brush = color;
 
             EllipseShape = new Ellipse
             {
                 Width = Radius * 2,
                 Height = Radius * 2,
-                Fill = color
+                Fill = Brush
             };
 
             System.Windows.Controls.Canvas.SetLeft(EllipseShape, V_Position.X - Radius);

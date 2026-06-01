@@ -40,8 +40,8 @@ namespace TMP_RGZ
             double yDiff = Math.Abs(Start.V_Position.Y - End.V_Position.Y);
             double xDiff = Math.Abs(Start.V_Position.X - End.V_Position.X);
 
-            IsHorizontal = yDiff < 1.0;
-            IsVertical = xDiff < 1.0;
+            IsHorizontal = yDiff <= xDiff && yDiff < 5.0;
+            IsVertical = xDiff < yDiff && xDiff < 5.0;
 
             if (!IsHorizontal && !IsVertical)
             {

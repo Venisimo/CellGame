@@ -24,7 +24,10 @@ namespace TMP_RGZ
         private int _frameCounter = 0;
         private int _edgeDeletionCounter = 0;
 
-        public GameWindow()
+        private int _obectCount;
+        private double _speed;
+      
+        public GameWindow(int objectCount, double speed)
         {
             InitializeComponent();
 
@@ -37,6 +40,9 @@ namespace TMP_RGZ
 
             // Отрисовка поля
             DrawGameField();
+
+            _obectCount = objectCount;
+            _speed = speed;
 
             // Создание игровых объектов
             InitializeGameObjects();
@@ -114,18 +120,15 @@ namespace TMP_RGZ
         {
             objects = new List<IGameObject>();
 
-            int objectCount = 5;
-
-            for (int i = 0; i < objectCount; i++)
+            for (int i = 0; i < _obectCount; i++)
             {
-                double radius = 15;
+                double radius = 10;
                 double x = random.Next((int)radius + 10, gameField.Width - (int)radius - 10);
                 double y = random.Next((int)radius + 10, gameField.Height - (int)radius - 10);
                 Vector position = new Vector(x, y);
 
                 double angle = random.NextDouble() * 2 * Math.PI;
-                double speed = 250;
-                Vector velocity = new Vector(Math.Cos(angle) * speed, Math.Sin(angle) * speed);
+                Vector velocity = new Vector(Math.Cos(angle) * _speed, Math.Sin(angle) * _speed);
 
                 Brush color = new SolidColorBrush(Color.FromRgb(
                     (byte)random.Next(100, 255),
@@ -137,7 +140,7 @@ namespace TMP_RGZ
                 GameCanvas.Children.Add(obj.Shape);
             }
 
-            Logger.Log($"Создано {objectCount} шариков", "GAME");
+            Logger.Log($"Создано {_obectCount} шариков", "GAME");
         }
 
         private void DrawGameField()
@@ -268,19 +271,7 @@ namespace TMP_RGZ
             // ========== 2. Коллизии шариков друг с другом ==========
             HandleCollisions();
 
-            // ========== 3. Коллизии шариков с рёбрами (отскок) ==========
-            _cellDrawingManager.CheckEdgeCollisions(objects);
-
-            // Небольшое дополнительное обновление для выхода из залипания
-            foreach (var obj in objects)
-            {
-                obj.Update(0.001);
-            }
-
-            // ========== 4. Коллизии шариков с вершинами ==========
-            _cellDrawingManager.CheckVertexCollisions(objects);
-
-            // ========== 5. Проверка касания рёбер (исчезновение) ==========
+            // ========== 3. Проверка касания рёбер (исчезновение) — ДО отскока ==========
             int beforeCount = _cellDrawingManager.EdgeCount;
             _cellDrawingManager.CheckEdgesTouchedByObjects(objects);
             int afterCount = _cellDrawingManager.EdgeCount;
@@ -291,12 +282,34 @@ namespace TMP_RGZ
                 Logger.Log($"Игровой цикл: удалено {beforeCount - afterCount} рёбер. Всего удалено за игру: {_edgeDeletionCounter}", "GAMELOOP");
             }
 
+
+            // ========== 4. Коллизии шариков с рёбрами (отскок) ==========
+            _cellDrawingManager.CheckEdgeCollisions(objects);
+
+            // Небольшое дополнительное обновление для выхода из залипания
+            foreach (var obj in objects)
+            {
+                obj.Update(0.001);
+            }
+
+            // ========== 5. Коллизии шариков с вершинами ==========
+            _cellDrawingManager.CheckVertexCollisions(objects);
+         
             // ========== 6. Периодическое логирование состояния (каждые 100 кадров) ==========
             _frameCounter++;
             if (_frameCounter % 100 == 0)
             {
                 Logger.Log($"Состояние игры: Вершин={_cellDrawingManager.VertexCount}, Рёбер={_cellDrawingManager.EdgeCount}, Шариков={objects.Count}", "STATE");
             }
+
+            //foreach (var obj in objects)
+            //{
+            //    if (obj is Circle c)
+            //    {
+            //        bool trapped = _cellDrawingManager.IsObjectInsideClosedCell(obj);
+            //        c.EllipseShape.Fill = trapped ? Brushes.Red : c.Brush;
+            //    }
+            //}
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
